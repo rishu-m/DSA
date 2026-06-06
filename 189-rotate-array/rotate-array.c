@@ -1,0 +1,23 @@
+void reverse(int* nums, int start, int end) {
+    while (start < end) {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+void rotate(int* nums, int numsSize, int k) {
+    if (numsSize == 0) return;
+    k = k % numsSize;  // Handle cases where k > numsSize
+
+    // Reverse the whole array
+    reverse(nums, 0, numsSize - 1);
+
+    // Reverse first k elements
+    reverse(nums, 0, k - 1);
+
+    // Reverse the remaining elements
+    reverse(nums, k, numsSize - 1);
+}
